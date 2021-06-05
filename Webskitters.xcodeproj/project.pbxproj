@@ -98,7 +98,6 @@
 			children = (
 				04381007266B37FB00E03CCA /* Modules */,
 				04381001266B376400E03CCA /* SupportingFiles */,
-				04380FFB266B370600E03CCA /* Launch */,
 				04380FF9266B36FA00E03CCA /* Resources */,
 				04380FF8266B36F100E03CCA /* Models */,
 				04380FF3266B36DB00E03CCA /* Helpers */,
@@ -137,13 +136,6 @@
 				04380FE7266B368700E03CCA /* Assets.xcassets */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		04380FFB266B370600E03CCA /* Launch */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Launch;
 			sourceTree = "<group>";
 		};
 		04380FFC266B371600E03CCA /* Utilities */ = {
