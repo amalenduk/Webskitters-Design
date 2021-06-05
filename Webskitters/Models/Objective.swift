@@ -7,20 +7,35 @@
 
 import Foundation
 
-class Objective {
-    let roleID: UUID
-    let id: UUID
-    let title: String
+struct Objective: Codable {
+    let id: Int?
+    let contentObj: String?
+    let score: String?
+    let projectID: Int?
+    let planningID: Int?
+    let createdAt, updatedAt: String?
+    let deletedAt: String?
+    let keyResult: [KeyResult]?
+    let majorAction: [String]?
     
-    let results: [Result] = [
-        Result(title: "Key Results 1"),
-        Result(title: "Key Results 2"),
-        Result(title: "Key Results 3")
-    ]
+    var title: String {
+        return contentObj ?? ""
+    }
     
-    init(title: String, id: UUID, roleID: UUID) {
-        self.roleID = roleID
-        self.id = id
-        self.title = title
+    var results: [KeyResult] {
+        return keyResult ?? []
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case contentObj = "content_obj"
+        case score
+        case projectID = "project_id"
+        case planningID = "planning_id"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case deletedAt = "deleted_at"
+        case keyResult = "key_result"
+        case majorAction = "major_action"
     }
 }

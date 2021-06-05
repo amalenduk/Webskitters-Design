@@ -14,8 +14,6 @@ class MenuViewController: BaseViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var menuTableView: TableView!
     
-    var sizes: [IndexPath: CGFloat] = [IndexPath: CGFloat]()
-    
     // MARK: - Properties
     
     var viewModel: MenuViewModel!
@@ -30,6 +28,7 @@ class MenuViewController: BaseViewController {
         super.viewDidLoad()
         
         if viewModel == nil { viewModel = MenuViewModel() }
+        viewModel.delegate = self
         
         setupTableView()
     }
@@ -51,11 +50,25 @@ class MenuViewController: BaseViewController {
         
         menuTableView.estimatedSectionHeaderHeight = UITableView.automaticDimension
         menuTableView.sectionHeaderHeight = 100
+        
+        menuTableView.refreshControl = UIRefreshControl()
+        menuTableView.refreshControl?.addTarget(self, action: #selector(pullTorefresh(_ :)), for: .valueChanged)
+        
+        getPlanings()
     }
     
     // MARK: - User Interaction
     
+    @objc func pullTorefresh(_ sender: UIRefreshControl) {
+        getPlanings()
+    }
+    
     // MARK: - Additional Helpers
+    
+    private func getPlanings() {
+        menuTableView.refreshControl?.beginRefreshing()
+        viewModel.getPlanings()
+    }
 }
 
 
@@ -130,20 +143,7 @@ extension MenuViewController: UITableViewDataSource {
 extension MenuViewController: RoleTableHeaderViewDelgate {
     
     func didTapOnHeaderView(on view: RoleTableHeaderView) {
-        var reloadable: [Int] = []
-        if let selectedSection = viewModel.selectedSection {
-            if view.tag == selectedSection {
-                viewModel.selectedSection = nil
-            }else {
-                viewModel.selectedSection = view.tag
-                reloadable.append(view.tag)
-            }
-            viewModel.roleViewModels[selectedSection].selectedObjectiveIndex = nil
-            reloadable.append(selectedSection)
-        }else {
-            viewModel.selectedSection = view.tag
-            reloadable.append(view.tag)
-        }
+        let reloadable: [Int] = viewModel.getReladbleSections(newSelected: view.tag)
         menuTableView.reloadSections(IndexSet(reloadable), with: .automatic)
     }
 }
@@ -155,5 +155,18 @@ extension MenuViewController: MenuNestedTableViewCellDelegate {
     func didChangeHeight(for cell: MenuNestedTableViewCell) {
         menuTableView.beginUpdates()
         menuTableView.endUpdates()
+    }
+}
+
+// MARK: - MenuViewModelDelegate
+
+extension MenuViewController: MenuViewModelDelegate {
+    
+    func didGetResponseForPlannig(is error: Error?) {
+        menuTableView.refreshControl?.endRefreshing()
+        if let error = error {
+            showAlert(with: "Error", message: error.localizedDescription)
+        }
+        menuTableView.reloadData()
     }
 }

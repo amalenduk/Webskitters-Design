@@ -32,6 +32,7 @@
 		04F488F2266B4D95009AFCBF /* MenuNestedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F488F0266B4D95009AFCBF /* MenuNestedTableViewCell.xib */; };
 		04F488FA266B5683009AFCBF /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F488F9266B5683009AFCBF /* TableView.swift */; };
 		04F488FD266B5D5F009AFCBF /* MenuNestedTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F488FC266B5D5F009AFCBF /* MenuNestedTableViewCellViewModel.swift */; };
+		04F48901266B7F03009AFCBF /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F48900266B7F03009AFCBF /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		04F488F0266B4D95009AFCBF /* MenuNestedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuNestedTableViewCell.xib; sourceTree = "<group>"; };
 		04F488F9266B5683009AFCBF /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		04F488FC266B5D5F009AFCBF /* MenuNestedTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuNestedTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		04F48900266B7F03009AFCBF /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		04380FF3266B36DB00E03CCA /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				04F488FF266B7EF6009AFCBF /* Networking */,
 				04F488B5266B43C0009AFCBF /* Protocols */,
 				04381000266B374500E03CCA /* Extensions */,
 				04380FFC266B371600E03CCA /* Utilities */,
@@ -308,6 +311,14 @@
 			path = MenuNestedTableViewCell;
 			sourceTree = "<group>";
 		};
+		04F488FF266B7EF6009AFCBF /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				04F48900266B7F03009AFCBF /* Networking.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -382,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F48901266B7F03009AFCBF /* Networking.swift in Sources */,
 				04381016266B387E00E03CCA /* BaseViewController.swift in Sources */,
 				04380FDC266B368500E03CCA /* AppDelegate.swift in Sources */,
 				04380FDE266B368500E03CCA /* SceneDelegate.swift in Sources */,
@@ -468,7 +480,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -523,7 +535,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -541,7 +553,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C96D8ZQ5VQ;
 				INFOPLIST_FILE = Webskitters/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -561,7 +573,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C96D8ZQ5VQ;
 				INFOPLIST_FILE = Webskitters/SupportingFiles/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

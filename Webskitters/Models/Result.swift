@@ -7,10 +7,27 @@
 
 import Foundation
 
-class Result {
-    let title: String
+// MARK: - KeyResult
+struct KeyResult: Codable {
+    let id: Int?
+    let keyResult, metrics: String?
+    let objectiveID: Int?
+    let createdAt, updatedAt: String?
+    let deletedAt: String?
+    let type: Int?
     
-    init(title: String) {
-        self.title = title
+    var title: String? {
+        return keyResult
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case keyResult = "key_result"
+        case metrics
+        case objectiveID = "objective_id"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case deletedAt = "deleted_at"
+        case type
     }
 }

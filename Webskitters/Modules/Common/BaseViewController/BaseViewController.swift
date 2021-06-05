@@ -30,3 +30,13 @@ class BaseViewController: UIViewController {
     
     // MARK: - Additional Helpers
 }
+
+
+extension BaseViewController {
+    
+    func showAlert(with title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+}
